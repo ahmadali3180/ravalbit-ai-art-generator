@@ -10,8 +10,8 @@ const getRandomPrompt = (prompt) => {
   return randomPrompt;
 };
 
-const downloadImage = async (_id, photo) => {
-  FileSaver.saveAs(photo, `download-${_id}.jpg`)
+async function downloadImage(_id, photo) {
+  FileSaver.saveAs(photo, `download-${_id}.jpg`);
 }
 
 export { getRandomPrompt, downloadImage };
