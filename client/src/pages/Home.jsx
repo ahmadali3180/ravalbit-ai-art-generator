@@ -34,8 +34,12 @@ const Home = () => {
         })
         if(response.ok) {
           const result = await response.json()
-  
-          setAllPosts(result.data.reverse())
+          const modData = await result.data.map((data) => ({
+            ...data, 
+            photo: data.photo.replace("http://", "https://")
+          }))
+          
+          setAllPosts(modData.reverse())
         }
       } catch (error) {
         alert(error)

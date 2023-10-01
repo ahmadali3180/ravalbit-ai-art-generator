@@ -26,12 +26,11 @@ const CreatePost = () => {
           body: JSON.stringify({
             prompt: form.prompt,
           }),
-        });
-
+        })
         const data = await response.json();
         setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
       } catch (err) {
-        alert(err);
+        alert(err.message);
       } finally {
         setGeneratingImg(false);
       }
@@ -45,7 +44,6 @@ const CreatePost = () => {
 
     if(form.name && form.photo) {
       setLoading(true)
-
       try {
         const response = await fetch("https://ravalbit-ai-art-server.onrender.com/api/v1/post", {
           method: "POST", 
@@ -54,10 +52,9 @@ const CreatePost = () => {
           },
           body: JSON.stringify(form)
         })
-        await response.json()
-        navigate("/")
+        response.json()
       } catch (error) {
-        alert(error)
+        alert(error.message)
       } finally {
         setLoading(false)
       }

@@ -10,24 +10,8 @@ const getRandomPrompt = (prompt) => {
   return randomPrompt;
 };
 
-async function downloadImage(_id, photo) {
-  try {
-    const response = await fetch(photo)
-
-    if(!response.ok) {
-      alert(`Failed to get response`)
-    }
-
-    const blobImage = await response.blob()
-    const fileName = `download-${_id}.jpg`
-
-    FileSaver.saveAs(blobImage, fileName)
-
-  } catch (error) {
-    alert(error)
-  }
-
-  
+const downloadImage = async (_id, photo) => {
+  FileSaver.saveAs(photo, `download-${_id}.jpg`)
 }
 
 export { getRandomPrompt, downloadImage };

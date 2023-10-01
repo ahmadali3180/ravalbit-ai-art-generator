@@ -3,6 +3,7 @@ import { download } from "../assets"
 import { downloadImage } from "../utils"
 
 const Card = ({_id, name, prompt, photo}) => {
+  
   return (
     <div className="roudned-xl group relative shadow-card hover:shadow-cardhover card">
       <img 
